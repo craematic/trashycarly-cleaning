@@ -3,125 +3,230 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TrashyCarly Cleaning</title>
+<title>TrashyCarly Cleaning | Premium Residential & Commercial</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 
 <style>
-body {font-family: Arial; margin:0; background:#f5f7fa;}
-header {background:#1e88e5; color:white; padding:60px 20px; text-align:center;}
-h1 {margin:0;}
-section {padding:40px 20px;}
-button {background:#1e88e5; color:white; padding:12px 20px; border:none; border-radius:5px; cursor:pointer;}
-.hidden {display:none;}
-.card {background:white; padding:20px; margin:10px 0; border-radius:10px;}
-</style>
-
-<script>
-function toggleWhy(){
-  let x = document.getElementById("whyText");
-  x.style.display = x.style.display === "none" ? "block" : "none";
+/* Reset & Luxury Base */
+* {box-sizing: border-box; margin:0; padding:0;}
+:root {
+    --primary: #1a1a1a;    /* Deep Midnight */
+    --accent: #d4af37;     /* Soft Gold/Champagne */
+    --bg-light: #fdfdfd;   /* Off-white */
+    --text-muted: #666;
 }
-</script>
-</head>
 
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg-light);
+    color: var(--primary);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* Gritty Grain Texture Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.container {max-width:1100px; margin:0 auto; padding: 0 20px;}
+section {padding:100px 0;}
+h1, h2, h3 {font-family: 'Playfair Display', serif; letter-spacing: -0.5px;}
+
+/* Hero Section */
+header {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('https://images.unsplash.com/photo-1603614486387-276f74fcbe2a?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    position: relative;
+}
+
+header h1 {font-size: 4.5em; line-height: 1.1; margin-bottom: 10px;}
+header p {font-size: 1.2em; text-transform: uppercase; letter-spacing: 4px; font-weight: 300; margin-bottom: 30px;}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--primary);
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 20px 45px;
+    border: none;
+    border-radius: 0; /* Sharp edges for a high-grade look */
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.btn-primary:hover {
+    background: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Service Cards */
+.section-title {text-align: center; margin-bottom: 60px;}
+.section-title h2 {font-size: 2.8em;}
+.section-title .line {width: 60px; height: 3px; background: var(--accent); margin: 20px auto;}
+
+.services-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;}
+
+.card {
+    background: white;
+    padding: 50px 40px;
+    border: 1px solid #eee;
+    transition: all 0.4s ease;
+    position: relative;
+}
+.card:hover {
+    border-color: var(--accent);
+    transform: translateY(-10px);
+}
+.card h3 {font-size: 1.6em; margin-bottom: 15px;}
+.card p {color: var(--text-muted); font-size: 0.95em;}
+
+/* Pricing Add-ons Table Style */
+.addon-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    font-weight: 400;
+}
+.addon-item span {font-family: 'Playfair Display', serif; font-weight: 700; color: var(--accent);}
+
+/* Booking Form - The "Glass" Look */
+#booking {
+    background: var(--primary);
+    color: white;
+}
+form {max-width: 600px; margin: 0 auto; display: grid; gap: 20px;}
+form input, form select {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 20px;
+    color: white;
+    font-family: inherit;
+}
+form button {background: var(--accent); color: var(--primary); padding: 20px; font-weight: 700; text-transform: uppercase; border: none; cursor: pointer;}
+
+/* Footer */
+footer {padding: 50px; text-align: center; background: #111; color: #555; font-size: 0.8em; letter-spacing: 1px;}
+
+@media (max-width: 768px) {
+    header h1 {font-size: 2.5em;}
+}
+</style>
+</head>
 <body>
 
 <header>
-<h1>Your Home, Sparkling Clean</h1>
-<p>Your time is precious. Let us do the cleaning</p>
-<br>
-<button onclick="document.getElementById('booking').scrollIntoView()">Get a Free Quote</button>
+    <div class="container">
+        <p>A New Standard of Clean</p>
+        <h1>Impeccable Spaces.<br>Zero Compromise.</h1>
+        <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Request an Invite / Quote</button>
+    </div>
 </header>
 
 <section>
-<h2>Our Services</h2>
+    <div class="container">
+        <div class="section-title">
+            <h2>Residential Excellence</h2>
+            <div class="line"></div>
+        </div>
+        <div class="services-grid">
+            <div class="card">
+                <h3>The Maintenance</h3>
+                <p>Designed for the modern schedule. Consistent, meticulous upkeep that keeps your sanctuary pristine.</p>
+            </div>
+            <div class="card">
+                <h3>The Restoration</h3>
+                <p>A deep-dive service targeting the details often missed. Baseboards, vents, and heavy sanitation.</p>
+            </div>
+            <div class="card">
+                <h3>The Transition</h3>
+                <p>Move-in/Move-out services for those who demand a "white-glove" standard before the first box arrives.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-<div class="card">
-<h3>Regular Cleaning (Maintenance)</h3>
-<p>Consistent upkeep including dusting, vacuuming, mopping, and bathroom/kitchen sanitation.</p>
-</div>
-
-<div class="card">
-<h3>Deep Cleaning</h3>
-<p>A top-to-bottom service targeting hard-to-reach spots, baseboards, and intensive buildup removal.</p>
-</div>
-
-<div class="card">
-<h3>Move-In/Move-Out Cleaning</h3>
-<p>Specialized cleaning for empty homes to ensure deposit returns, including cabinets, appliances, and fixtures.</p>
-</div>
-
-<div class="card">
-<h3>Specialized Add-ons</h3>
-<p>Oven cleaning, refrigerator cleaning, and interior window cleaning available.</p>
-</div>
-
+<section style="background: #f4f4f4;">
+    <div class="container">
+        <div class="section-title">
+            <h2>Commercial Portfolio</h2>
+            <div class="line"></div>
+        </div>
+        <div class="services-grid">
+            <div class="card">
+                <h3>Janitorial Luxe</h3>
+                <p>High-end cleaning for arenas, schools, and flagship offices where first impressions are everything.</p>
+            </div>
+            <div class="card">
+                <h3>Hardwood & Stone</h3>
+                <p>Specialized polishing and restoration for premium flooring materials.</p>
+            </div>
+            <div class="card">
+                <h3>Executive Office</h3>
+                <p>Custom cleaning schedules tailored to the needs of busy corporate environments.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section>
-<h2>Commercial Cleaning</h2>
-
-<div class="card">
-<h3>Janitorial Services</h3>
-<p>We specialize in janitorial services for offices, arenas, schools, and more.</p>
-</div>
-
-<div class="card">
-<h3>Floor Cleaning & Polishing</h3>
-<p>Keep your floors glowing like new.</p>
-</div>
-
-<div class="card">
-<h3>Carpet Cleaning</h3>
-<p>Protect your carpet and extend its life.</p>
-</div>
-
-<div class="card">
-<h3>Office Cleaning</h3>
-<p>Nightly, weekly, and bi-weekly cleaning options with disinfecting services.</p>
-</div>
-
-</section>
-
-<section>
-<h2>Popular Add-On Services (A La Carte)</h2>
-
-<div class="card">Inside Oven: $25 - $35</div>
-<div class="card">Inside Refrigerator: $25 - $35</div>
-<div class="card">Interior Windows: $5 - $10 per window</div>
-<div class="card">Laundry / Folding: $15 - $20 per load</div>
-
-</section>
-
-<section>
-<h2 onclick="toggleWhy()" style="cursor:pointer;">
-Why Choose Us (Click Me)
-</h2>
-
-<div id="whyText" class="hidden card">
-<p><b>Trusted & Vetted Professionals:</b> Our team is background-checked, insured, and trained.</p>
-<p><b>Consistent Quality:</b> We don’t cut corners; we clean them.</p>
-<p><b>100% Satisfaction Guarantee:</b> Not happy? We’ll fix it free.</p>
-<p><b>Tailored to Your Life:</b> Customized cleaning plans for your needs.</p>
-</div>
-
+    <div class="container">
+        <div class="section-title">
+            <h2>Boutique Add-Ons</h2>
+            <p>Elevate your service with our a-la-carte menu.</p>
+            <div class="line"></div>
+        </div>
+        <div style="max-width: 700px; margin: 0 auto;">
+            <div class="addon-item">Interior Culinary Oven <span>$35</span></div>
+            <div class="addon-item">Refrigeration Detailing <span>$35</span></div>
+            <div class="addon-item">Precision Window Cleaning <span>$10 / ea</span></div>
+            <div class="addon-item">Laundry & Textile Care <span>$20 / load</span></div>
+        </div>
+    </div>
 </section>
 
 <section id="booking">
-<h2>Book a Cleaning</h2>
-
-<form action="https://formspree.io/f/mreyywlq" method="POST">
-<input type="text" name="name" placeholder="Name" required><br><br>
-<input type="email" name="email" placeholder="Email" required><br><br>
-<select name="service">
-<option>Regular Cleaning</option>
-<option>Deep Cleaning</option>
-<option>Move-In/Move-Out</option>
-<option>Commercial Cleaning</option>
-</select><br><br>
-<button type="submit">Book Now</button>
-</form>
-
+    <div class="container">
+        <div class="section-title">
+            <h2 style="color: white;">Secure Your Date</h2>
+            <div class="line"></div>
+        </div>
+        <form action="https://formspree.io/f/mreyywlq" method="POST">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <select name="service">
+                <option>Select Tier: The Maintenance</option>
+                <option>Select Tier: The Restoration</option>
+                <option>Select Tier: The Transition</option>
+                <option>Select Tier: Commercial Portfolio</option>
+            </select>
+            <button type="submit">Initialize Booking</button>
+        </form>
+    </div>
 </section>
+
+<footer>
+    <p>© 2026 TRASHYCARLY CLEANING | BEYOND THE SURFACE</p>
+</footer>
 
 </body>
 </html>
