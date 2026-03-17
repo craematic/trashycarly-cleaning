@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TrashyCarly Cleaning | Boutique Service | Mesquite, TX</title>
+<title>TrashyCarly Cleaning | Secure Booking | Mesquite, TX</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
 /* Reset & Luxury Base */
@@ -14,244 +15,249 @@
     --primary: #1a1a1a;    /* Midnight Charcoal */
     --accent: #d4af37;     /* Champagne Gold */
     --bg-light: #fdfdfd;   
-    --text-muted: #666;
 }
 
 body {
     font-family: 'Montserrat', sans-serif;
     background: var(--bg-light);
     color: var(--primary);
-    line-height: 1.7;
+    line-height: 1.6;
+}
+
+/* Gritty Texture Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 9999;
 }
 
 .container {max-width:1100px; margin:0 auto; padding: 0 20px;}
-section {padding:80px 0;}
-h1, h2, h3 {font-family: 'Playfair Display', serif;}
 
-/* CART DRAWER */
+/* MINI CART ICON */
 #cart-icon {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--accent);
-    color: var(--primary);
-    padding: 15px 25px;
-    font-weight: 700;
-    cursor: pointer;
-    z-index: 1001;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    position: fixed; top: 20px; right: 20px;
+    background: var(--primary); color: white;
+    padding: 15px 25px; font-weight: 700; cursor: pointer;
+    z-index: 1001; border: 1px solid var(--accent);
+    text-transform: uppercase; font-size: 0.8em; letter-spacing: 1px;
 }
 
+/* CART DRAWER */
 #cart-drawer {
     position: fixed;
     top: 0; right: -400px;
-    width: 350px;
+    width: 380px;
     height: 100vh;
     background: white;
     box-shadow: -10px 0 30px rgba(0,0,0,0.1);
     z-index: 1002;
     transition: 0.4s ease;
-    padding: 40px 20px;
+    padding: 30px 20px;
     display: flex;
     flex-direction: column;
 }
-
 #cart-drawer.active { right: 0; }
 
-.cart-items { flex-grow: 1; overflow-y: auto; margin: 20px 0; border-top: 1px solid #eee; }
-.cart-item { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #eee; font-size: 0.9em; }
-.remove-item { color: #cc0000; cursor: pointer; font-size: 0.8em; }
+#cart-content { flex-grow:1; overflow-y:auto; margin:20px 0; border-top: 1px solid #eee; }
 
-/* HERO SECTION */
-header {
-    height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('https://images.unsplash.com/photo-1603614486387-276f74fcbe2a?auto=format&fit=crop&w=1920&q=80');
-    background-size: cover;
-    background-position: center;
-    color: white;
-}
-
-/* SECTION HEADERS */
-.section-title {text-align: center; margin-bottom: 50px;}
-.section-title .line {width: 50px; height: 2px; background: var(--accent); margin: 15px auto;}
-
-/* SERVICES GRID */
-.services-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;}
-.card {
-    background: white;
-    padding: 40px;
-    border: 1px solid #eee;
-    text-align: center;
-    transition: 0.3s;
-}
-.card:hover { border-color: var(--accent); transform: translateY(-5px); }
-.price { font-family: 'Playfair Display', serif; font-size: 1.8em; color: var(--accent); margin: 15px 0; display: block;}
-
-.btn-add {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    text-transform: uppercase;
-    font-size: 0.75em;
-    letter-spacing: 1px;
-    cursor: pointer;
-    margin-top: 15px;
-}
-.btn-add:hover { background: var(--accent); color: var(--primary); }
-
-/* YOUTUBE SECTION: THE ATMOSPHERE */
-#vibe { background: #111; color: white; text-align: center; }
-.video-container {
-    max-width: 800px;
-    margin: 40px auto 0;
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    height: 0;
-    overflow: hidden;
-    border: 1px solid var(--accent);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-}
-.video-container iframe {
-    position: absolute;
+/* STRIPE-STYLE OVERLAY */
+#payment-overlay {
+    position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
 }
 
-/* FOOTER */
-footer {padding: 50px; text-align: center; background: #0a0a0a; color: #555; font-size: 0.8em; letter-spacing: 1px;}
+.payment-modal {
+    background: white;
+    width: 95%;
+    max-width: 500px;
+    padding: 40px;
+    position: relative;
+    border-top: 5px solid var(--accent);
+}
 
-#overlay {
+.payment-modal h2 { font-family: 'Playfair Display'; margin-bottom: 20px; }
+
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; font-size: 0.7em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; color: #666; }
+.form-group input { 
+    width: 100%; padding: 12px; border: 1px solid #ddd; 
+    font-family: inherit; font-size: 1em; 
+}
+
+.card-input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 0 12px;
+}
+.card-input-wrapper input { border: none; padding: 12px 5px; }
+
+.btn-pay {
+    background: var(--primary);
+    color: white;
+    width: 100%;
+    padding: 18px;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+.btn-pay:hover { background: var(--accent); color: var(--primary); }
+
+.close-modal {
+    position: absolute;
+    top: 15px; right: 15px;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: #999;
+}
+
+/* YOUTUBE WIDGET (MINI) */
+#mini-vibe {
     position: fixed;
-    top:0; left:0; width:100%; height:100%;
-    background: rgba(0,0,0,0.5);
-    display: none;
+    bottom: 20px; left: 20px;
+    width: 280px; height: 157px;
     z-index: 1000;
+    border: 1px solid var(--accent);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* OVERLAY FOR CART BG */
+#overlay-bg {
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.5); display: none; z-index: 1000;
 }
 </style>
 </head>
 <body>
 
 <div id="cart-icon" onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</div>
-<div id="overlay" onclick="toggleCart()"></div>
+<div id="overlay-bg" onclick="toggleCart()"></div>
 
 <div id="cart-drawer">
     <h2 style="font-family:'Playfair Display'">Your Selection</h2>
-    <div class="cart-items" id="cart-content"></div>
+    <div id="cart-content">
+        </div>
+    
     <div style="border-top: 2px solid var(--primary); padding-top: 20px;">
-        <h3>Total: $<span id="cart-total">0</span></h3>
-        <button class="btn-add" style="width: 100%; margin-top: 20px;" onclick="alert('Proceeding to Mesquite, TX Scheduling...')">Checkout / Book</button>
+        <h3 style="margin-bottom: 20px;">Total: $<span id="cart-total">0</span></h3>
+        
+        <form id="booking-form" action="https://formspree.io/f/mreyywlq" method="POST">
+            <input type="hidden" name="Order_Summary" id="order-summary-input">
+            <div class="form-group">
+                <input type="text" name="Address" placeholder="Mesquite Service Address" required style="width:100%; padding:12px; border:1px solid #eee;">
+            </div>
+            <button type="submit" class="btn-pay" style="background:#f4f4f4; color:#333; margin-bottom: 10px;">Request Invoice via Email</button>
+        </form>
+
+        <button class="btn-pay" onclick="showPaymentModal()">Pay with Card</button>
+        <div id="paypal-button-container" style="margin-top:15px;"></div>
     </div>
 </div>
 
-<header>
-    <div class="container">
-        <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.9em; margin-bottom: 10px;">Boutique Care | Mesquite, TX</p>
-        <h1 style="font-size: 3.5em;">Impeccable Spaces.<br>Zero Compromise.</h1>
-    </div>
-</header>
-
-<section>
-    <div class="container">
-        <div class="section-title">
-            <h2>The Residential Tiers</h2>
-            <div class="line"></div>
-        </div>
-        <div class="services-grid">
-            <div class="card">
-                <h3>The Maintenance</h3>
-                <span class="price">$185</span>
-                <p>Bi-weekly or Monthly upkeep for homes up to 2,000 sq ft.</p>
-                <button class="btn-add" onclick="addToCart('The Maintenance', 185)">Add to Cart</button>
-            </div>
-            <div class="card">
-                <h3>The Restoration</h3>
-                <span class="price">$345</span>
-                <p>Deep-dive sanitation including baseboards and heavy detail work.</p>
-                <button class="btn-add" onclick="addToCart('The Restoration', 345)">Add to Cart</button>
-            </div>
-            <div class="card">
-                <h3>The Transition</h3>
-                <span class="price">$495</span>
-                <p>Move-In/Out excellence. Includes inside cabinets and appliances.</p>
-                <button class="btn-add" onclick="addToCart('The Transition', 495)">Add to Cart</button>
+<div id="payment-overlay">
+    <div class="payment-modal">
+        <span class="close-modal" onclick="showPaymentModal()">×</span>
+        <h2>Secure Checkout</h2>
+        <p style="font-size: 0.8em; color: #999; margin-bottom: 20px;">Mesquite Residential & Commercial Portal</p>
+        
+        <div class="form-group">
+            <label>Card Information</label>
+            <div class="card-input-wrapper">
+                <i class="fa-solid fa-credit-card" style="color:#ccc;"></i>
+                <input type="text" placeholder="Card Number" style="flex-grow:1;">
+                <input type="text" placeholder="MM/YY" style="width:70px; text-align:center;">
+                <input type="text" placeholder="CVC" style="width:50px; text-align:center;">
             </div>
         </div>
-    </div>
-</section>
 
-<section id="vibe">
-    <div class="container">
-        <div class="section-title">
-            <h2 style="color: white;">The Atmosphere</h2>
-            <p style="color: var(--accent); font-style: italic;">Curated rhythms for a premium cleaning experience.</p>
-            <div class="line"></div>
-        </div>
-        <div class="video-container">
-            <iframe 
-                src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_mM93GVBusPk2W79AC8q5K4NpltG4mtV5A" 
-                title="YouTube playlist" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
+        <button class="btn-pay" onclick="alert('Demo Mode: Connect Stripe API for live processing.')">
+            Pay $<span id="modal-total">0</span>
+        </button>
+        <p style="text-align:center; font-size:0.65em; margin-top:15px; color:#bbb; text-transform:uppercase; letter-spacing:1px;">
+            <i class="fa-solid fa-shield-halved"></i> 256-Bit SSL Encrypted
+        </p>
     </div>
-</section>
+</div>
 
-<footer>
-    <p>© 2026 TRASHYCARLY CLEANING | BEYOND THE SURFACE | MESQUITE, TEXAS</p>
-</footer>
+<div id="mini-vibe">
+    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_mM93GVBusPk2W79AC8q5K4NpltG4mtV5A" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
 
 <script>
 let cart = [];
 
 function toggleCart() {
-    document.getElementById('cart-drawer').classList.toggle('active');
-    let overlay = document.getElementById('overlay');
-    overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
+    const drawer = document.getElementById('cart-drawer');
+    const bg = document.getElementById('overlay-bg');
+    drawer.classList.toggle('active');
+    bg.style.display = (bg.style.display === 'block') ? 'none' : 'block';
 }
 
+function showPaymentModal() {
+    const overlay = document.getElementById('payment-overlay');
+    overlay.style.display = (overlay.style.display === 'flex') ? 'none' : 'flex';
+    document.getElementById('modal-total').innerText = document.getElementById('cart-total').innerText;
+}
+
+// Function to call from your service cards
 function addToCart(name, price) {
     cart.push({name, price});
     updateCartUI();
     if(!document.getElementById('cart-drawer').classList.contains('active')) toggleCart();
 }
 
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCartUI();
-}
-
 function updateCartUI() {
-    const cartContent = document.getElementById('cart-content');
-    const cartCount = document.getElementById('cart-count');
-    const cartTotal = document.getElementById('cart-total');
-    
-    cartContent.innerHTML = '';
+    const content = document.getElementById('cart-content');
+    const summaryInput = document.getElementById('order-summary-input');
     let total = 0;
+    let summaryText = "";
 
+    content.innerHTML = '';
     cart.forEach((item, index) => {
         total += item.price;
-        cartContent.innerHTML += `
-            <div class="cart-item">
-                <div>
-                    <strong>${item.name}</strong><br>
-                    $${item.price}
-                </div>
-                <span class="remove-item" onclick="removeFromCart(${index})">Remove</span>
-            </div>
-        `;
+        summaryText += `${item.name} ($${item.price}) | `;
+        content.innerHTML += `
+            <div style="display:flex; justify-content:space-between; padding:15px 0; border-bottom:1px solid #eee; font-size:0.9em;">
+                <span>${item.name}</span>
+                <strong>$${item.price}</strong>
+            </div>`;
     });
 
-    cartCount.innerText = cart.length;
-    cartTotal.innerText = total;
+    document.getElementById('cart-count').innerText = cart.length;
+    document.getElementById('cart-total').innerText = total;
+    summaryInput.value = `Order for Mesquite, TX: ${summaryText} TOTAL: $${total}`;
 }
+
+// PayPal Integration
+paypal.Buttons({
+    createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{ amount: { value: document.getElementById('cart-total').innerText } }]
+        });
+    },
+    onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+            alert('Payment received! Thank you, ' + details.payer.name.given_name);
+        });
+    }
+}).render('#paypal-button-container');
 </script>
 
 </body>
