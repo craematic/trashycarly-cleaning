@@ -3,193 +3,309 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TrashyCarly Cleaning | Secure Booking | Mesquite, TX</title>
+<title>TrashyCarly | Exclusive Bespoke Cleaning</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
 /* Reset & Luxury Base */
-* {box-sizing: border-box; margin:0; padding:0;}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-    --primary: #1a1a1a;    /* Midnight Charcoal */
-    --accent: #d4af37;     /* Champagne Gold */
-    --bg-light: #fdfdfd;   
+    --primary: #050505;      /* Deep Onyx */
+    --secondary: #121212;    /* Charcoal */
+    --accent: #D4AF37;       /* Metallic Gold */
+    --text-light: #F8F5F0;   /* Ivory */
+    --text-dim: #A9A9A9;     /* Silver */
 }
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: var(--bg-light);
-    color: var(--primary);
+    background: var(--primary);
+    color: var(--text-light);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Gritty Texture Overlay */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: url('https://www.transparenttextures.com/patterns/stardust.png');
-    opacity: 0.04;
-    pointer-events: none;
-    z-index: 9999;
+h1, h2, h3, .serif {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
 }
 
-.container {max-width:1100px; margin:0 auto; padding: 0 20px;}
+/* Elegant Header */
+header {
+    position: absolute;
+    top: 0; left: 0; width: 100%;
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.logo span { color: var(--accent); font-style: italic; text-transform: lowercase; }
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0.9)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+    padding: 0 20px;
+}
+.hero h1 {
+    font-size: 4.5em;
+    margin-bottom: 15px;
+    color: var(--text-light);
+    letter-spacing: 1px;
+}
+.hero p {
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    color: var(--accent);
+    margin-bottom: 40px;
+}
+
+/* Service Cards */
+.services-container {
+    max-width: 1200px;
+    margin: -100px auto 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+.service-card {
+    background: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+.service-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+.service-card h3 { font-size: 1.8em; margin-bottom: 10px; color: var(--accent); }
+.service-card p { font-size: 0.9em; color: var(--text-dim); margin-bottom: 25px; font-weight: 300; }
+.price { font-size: 1.5em; font-family: 'Playfair Display'; margin-bottom: 25px; }
+
+/* Luxury Buttons */
+.btn {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 15px 30px;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: 0.4s;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+.btn:hover {
+    background: var(--accent);
+    color: var(--primary);
+}
 
 /* MINI CART ICON */
 #cart-icon {
-    position: fixed; top: 20px; right: 20px;
-    background: var(--primary); color: white;
-    padding: 15px 25px; font-weight: 700; cursor: pointer;
-    z-index: 1001; border: 1px solid var(--accent);
-    text-transform: uppercase; font-size: 0.8em; letter-spacing: 1px;
+    position: fixed; top: 40px; right: 60px;
+    background: transparent; color: var(--text-light);
+    padding: 10px 0; font-weight: 300; cursor: pointer;
+    z-index: 1001;
+    text-transform: uppercase; font-size: 0.85em; letter-spacing: 2px;
+    border-bottom: 1px solid transparent;
+    transition: 0.3s;
 }
+#cart-icon:hover { border-bottom: 1px solid var(--accent); color: var(--accent); }
 
 /* CART DRAWER */
 #cart-drawer {
-    position: fixed;
-    top: 0; right: -400px;
-    width: 380px;
-    height: 100vh;
-    background: white;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-    z-index: 1002;
-    transition: 0.4s ease;
-    padding: 30px 20px;
-    display: flex;
-    flex-direction: column;
+    position: fixed; top: 0; right: -450px;
+    width: 420px; height: 100vh;
+    background: var(--secondary);
+    border-left: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: -10px 0 50px rgba(0,0,0,0.8);
+    z-index: 1002; transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    padding: 50px 40px;
+    display: flex; flex-direction: column;
 }
 #cart-drawer.active { right: 0; }
+#cart-content { flex-grow: 1; overflow-y: auto; margin: 30px 0; border-top: 1px solid rgba(255,255,255,0.05); }
 
-#cart-content { flex-grow:1; overflow-y:auto; margin:20px 0; border-top: 1px solid #eee; }
+.cart-item {
+    display: flex; justify-content: space-between;
+    padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.9em; font-weight: 300;
+}
+.cart-item strong { color: var(--accent); font-weight: 400; font-family: 'Playfair Display'; font-size: 1.2em;}
 
 /* STRIPE-STYLE OVERLAY */
 #payment-overlay {
-    position: fixed;
-    top: 0; left: 0;
+    position: fixed; top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85);
-    display: none;
-    align-items: center;
-    justify-content: center;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(5px);
+    display: none; align-items: center; justify-content: center;
     z-index: 2000;
 }
-
 .payment-modal {
-    background: white;
-    width: 95%;
-    max-width: 500px;
-    padding: 40px;
-    position: relative;
-    border-top: 5px solid var(--accent);
+    background: var(--primary);
+    width: 95%; max-width: 450px;
+    padding: 50px; position: relative;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.9);
 }
+.payment-modal h2 { font-size: 2em; margin-bottom: 10px; color: var(--accent); text-align: center;}
 
-.payment-modal h2 { font-family: 'Playfair Display'; margin-bottom: 20px; }
-
-.form-group { margin-bottom: 15px; }
-.form-group label { display: block; font-size: 0.7em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; color: #666; }
+.form-group { margin-bottom: 25px; }
+.form-group label { display: block; font-size: 0.65em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; color: var(--text-dim); }
 .form-group input { 
-    width: 100%; padding: 12px; border: 1px solid #ddd; 
-    font-family: inherit; font-size: 1em; 
+    width: 100%; padding: 15px; 
+    background: transparent; border: 1px solid rgba(255,255,255,0.1); 
+    color: var(--text-light); font-family: inherit; font-size: 1em; transition: 0.3s;
 }
+.form-group input:focus { outline: none; border-color: var(--accent); }
 
 .card-input-wrapper {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ddd;
-    padding: 0 12px;
-}
-.card-input-wrapper input { border: none; padding: 12px 5px; }
-
-.btn-pay {
-    background: var(--primary);
-    color: white;
-    width: 100%;
-    padding: 18px;
-    border: none;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 2px;
-    cursor: pointer;
-    margin-top: 10px;
+    display: flex; align-items: center;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: transparent;
     transition: 0.3s;
 }
-.btn-pay:hover { background: var(--accent); color: var(--primary); }
+.card-input-wrapper:focus-within { border-color: var(--accent); }
+.card-input-wrapper input { border: none; padding: 15px 10px; }
+.card-input-wrapper i { margin-left: 15px; color: var(--text-dim); }
 
 .close-modal {
-    position: absolute;
-    top: 15px; right: 15px;
-    cursor: pointer;
-    font-size: 1.5em;
-    color: #999;
+    position: absolute; top: 20px; right: 25px;
+    cursor: pointer; font-size: 2em; color: var(--text-dim); font-weight: 200; transition: 0.3s;
 }
+.close-modal:hover { color: var(--accent); }
 
 /* YOUTUBE WIDGET (MINI) */
 #mini-vibe {
-    position: fixed;
-    bottom: 20px; left: 20px;
-    width: 280px; height: 157px;
-    z-index: 1000;
-    border: 1px solid var(--accent);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    position: fixed; bottom: 30px; left: 30px;
+    width: 250px; height: 140px; z-index: 1000;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    transition: 0.4s;
+    opacity: 0.6; filter: grayscale(100%);
 }
+#mini-vibe:hover { opacity: 1; filter: grayscale(0%); border-color: var(--accent); }
 
 /* OVERLAY FOR CART BG */
 #overlay-bg {
     position: fixed; top:0; left:0; width:100%; height:100%;
-    background: rgba(0,0,0,0.5); display: none; z-index: 1000;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(3px);
+    display: none; z-index: 1000;
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--primary); }
+::-webkit-scrollbar-thumb { background: var(--accent); }
 </style>
 </head>
 <body>
 
-<div id="cart-icon" onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</div>
+<header>
+    <div class="logo">TrashyCarly <span>exclusive</span></div>
+    <div id="cart-icon" onclick="toggleCart()">Reservation [<span id="cart-count">0</span>]</div>
+</header>
+
+<div class="hero">
+    <p>Mesquite, Texas</p>
+    <h1>The Art of Pristine</h1>
+    <p style="color: var(--text-light); font-size: 0.8em; letter-spacing: 2px;">Bespoke property care for the discerning client.</p>
+</div>
+
+<div class="services-container">
+    <div class="service-card">
+        <h3>The Estate Clean</h3>
+        <p>Comprehensive top-to-bottom detailing for luxury homes and large estates. Uncompromising attention to detail.</p>
+        <div class="price">$450</div>
+        <button class="btn" onclick="addToCart('The Estate Clean', 450)">Reserve</button>
+    </div>
+    <div class="service-card">
+        <h3>The Penthouse</h3>
+        <p>A specialized touch for high-rise living. Includes deep surface polishing and panoramic window detailing.</p>
+        <div class="price">$300</div>
+        <button class="btn" onclick="addToCart('The Penthouse', 300)">Reserve</button>
+    </div>
+    <div class="service-card">
+        <h3>White Glove Move</h3>
+        <p>Move-in or move-out preparations designed to leave the property in absolute immaculate condition.</p>
+        <div class="price">$600</div>
+        <button class="btn" onclick="addToCart('White Glove Move', 600)">Reserve</button>
+    </div>
+</div>
+
 <div id="overlay-bg" onclick="toggleCart()"></div>
 
 <div id="cart-drawer">
-    <h2 style="font-family:'Playfair Display'">Your Selection</h2>
+    <h2 style="font-size: 2.2em; color: var(--text-light);">Your Dossier</h2>
+    <p style="font-size: 0.7em; text-transform: uppercase; letter-spacing: 2px; color: var(--accent);">Mesquite Service Portal</p>
+    
     <div id="cart-content">
         </div>
     
-    <div style="border-top: 2px solid var(--primary); padding-top: 20px;">
-        <h3 style="margin-bottom: 20px;">Total: $<span id="cart-total">0</span></h3>
+    <div style="border-top: 1px solid rgba(212,175,55,0.3); padding-top: 30px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <span style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8em;">Total Investment</span>
+            <h3 style="font-size: 1.8em; color: var(--accent);">$<span id="cart-total">0</span></h3>
+        </div>
         
         <form id="booking-form" action="https://formspree.io/f/mreyywlq" method="POST">
             <input type="hidden" name="Order_Summary" id="order-summary-input">
             <div class="form-group">
-                <input type="text" name="Address" placeholder="Mesquite Service Address" required style="width:100%; padding:12px; border:1px solid #eee;">
+                <input type="text" name="Address" placeholder="Mesquite Service Address" required>
             </div>
-            <button type="submit" class="btn-pay" style="background:#f4f4f4; color:#333; margin-bottom: 10px;">Request Invoice via Email</button>
+            <button type="submit" class="btn" style="margin-bottom: 15px; background: rgba(255,255,255,0.05);">Request Email Invoice</button>
         </form>
 
-        <button class="btn-pay" onclick="showPaymentModal()">Pay with Card</button>
-        <div id="paypal-button-container" style="margin-top:15px;"></div>
+        <button class="btn" style="background: var(--accent); color: var(--primary);" onclick="showPaymentModal()">Secure Checkout</button>
+        <div id="paypal-button-container" style="margin-top:20px;"></div>
     </div>
 </div>
 
 <div id="payment-overlay">
     <div class="payment-modal">
         <span class="close-modal" onclick="showPaymentModal()">×</span>
-        <h2>Secure Checkout</h2>
-        <p style="font-size: 0.8em; color: #999; margin-bottom: 20px;">Mesquite Residential & Commercial Portal</p>
+        <h2>Finalize Booking</h2>
+        <p style="font-size: 0.7em; color: var(--text-dim); margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; text-align: center;">Encrypted Client Gateway</p>
         
         <div class="form-group">
             <label>Card Information</label>
             <div class="card-input-wrapper">
-                <i class="fa-solid fa-credit-card" style="color:#ccc;"></i>
+                <i class="fa-solid fa-credit-card"></i>
                 <input type="text" placeholder="Card Number" style="flex-grow:1;">
                 <input type="text" placeholder="MM/YY" style="width:70px; text-align:center;">
-                <input type="text" placeholder="CVC" style="width:50px; text-align:center;">
+                <input type="text" placeholder="CVC" style="width:60px; text-align:center;">
             </div>
         </div>
 
-        <button class="btn-pay" onclick="alert('Demo Mode: Connect Stripe API for live processing.')">
-            Pay $<span id="modal-total">0</span>
+        <button class="btn" style="background: var(--accent); color: var(--primary);" onclick="alert('Demo Mode: Connect Stripe API for live processing.')">
+            Authorize $<span id="modal-total">0</span>
         </button>
-        <p style="text-align:center; font-size:0.65em; margin-top:15px; color:#bbb; text-transform:uppercase; letter-spacing:1px;">
-            <i class="fa-solid fa-shield-halved"></i> 256-Bit SSL Encrypted
+        <p style="text-align:center; font-size:0.65em; margin-top:20px; color:var(--text-dim); text-transform:uppercase; letter-spacing:2px;">
+            <i class="fa-solid fa-shield-halved" style="color: var(--accent);"></i> 256-Bit SSL Secured
         </p>
     </div>
 </div>
@@ -211,12 +327,15 @@ function toggleCart() {
 }
 
 function showPaymentModal() {
+    if(cart.length === 0) {
+        alert("Please select a service before proceeding to checkout.");
+        return;
+    }
     const overlay = document.getElementById('payment-overlay');
     overlay.style.display = (overlay.style.display === 'flex') ? 'none' : 'flex';
     document.getElementById('modal-total').innerText = document.getElementById('cart-total').innerText;
 }
 
-// Function to call from your service cards
 function addToCart(name, price) {
     cart.push({name, price});
     updateCartUI();
@@ -230,11 +349,16 @@ function updateCartUI() {
     let summaryText = "";
 
     content.innerHTML = '';
+    
+    if(cart.length === 0) {
+        content.innerHTML = '<p style="color: var(--text-dim); text-align: center; margin-top: 20px;">Your dossier is currently empty.</p>';
+    }
+
     cart.forEach((item, index) => {
         total += item.price;
         summaryText += `${item.name} ($${item.price}) | `;
         content.innerHTML += `
-            <div style="display:flex; justify-content:space-between; padding:15px 0; border-bottom:1px solid #eee; font-size:0.9em;">
+            <div class="cart-item">
                 <span>${item.name}</span>
                 <strong>$${item.price}</strong>
             </div>`;
@@ -245,6 +369,9 @@ function updateCartUI() {
     summaryInput.value = `Order for Mesquite, TX: ${summaryText} TOTAL: $${total}`;
 }
 
+// Initialize empty cart state
+updateCartUI();
+
 // PayPal Integration
 paypal.Buttons({
     createOrder: function(data, actions) {
@@ -254,7 +381,7 @@ paypal.Buttons({
     },
     onApprove: function(data, actions) {
         return actions.order.capture().then(function(details) {
-            alert('Payment received! Thank you, ' + details.payer.name.given_name);
+            alert('Payment secured. We look forward to serving you, ' + details.payer.name.given_name);
         });
     }
 }).render('#paypal-button-container');
