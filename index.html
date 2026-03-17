@@ -26,7 +26,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Mobile-First Header */
+/* Header */
 header {
     padding: 15px var(--safe-area);
     display: flex;
@@ -39,7 +39,7 @@ header {
     border-bottom: 1px solid #222;
 }
 
-.brand { font-family: 'Playfair Display'; font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+.brand { font-family: 'Playfair Display'; font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; cursor: pointer; }
 .brand span { color: var(--gold); font-weight: 400; font-style: italic; text-transform: lowercase; }
 
 #cart-btn {
@@ -54,197 +54,126 @@ header {
     gap: 8px;
 }
 
-/* Industrial Hero */
+/* Views Management */
+.view { display: none; min-height: 100vh; animation: fadeIn 0.5s ease; }
+.view.active { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Catalog Page */
 .hero {
-    padding: 60px var(--safe-area);
-    background: linear-gradient(rgba(0,0,0,0.7), var(--onyx)), url('https://images.unsplash.com/photo-1581578731548-c64695ce6958?q=80&w=2070&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
-    border-bottom: 1px solid var(--gold);
+    padding: 80px var(--safe-area);
+    background: linear-gradient(rgba(0,0,0,0.7), var(--onyx)), url('http://googleusercontent.com/image_collection/image_retrieval/12841122644067351737_0');
+    background-size: cover; background-position: center;
+    text-align: center;
 }
+.hero h1 { font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 10px; }
+.hero p { color: var(--gold); letter-spacing: 4px; text-transform: uppercase; font-size: 0.8rem; }
 
-.hero h1 { font-family: 'Playfair Display'; font-size: 2.5rem; line-height: 1.1; margin-bottom: 15px; }
-.hero p { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; font-weight: 600; }
-
-/* Service Layout */
-.section-title { 
-    padding: 40px var(--safe-area) 10px; 
-    font-family: 'Playfair Display'; 
-    font-size: 1.8rem; 
-    color: var(--gold); 
-}
+.section-title { padding: 40px var(--safe-area) 10px; font-family: 'Playfair Display'; font-size: 2rem; color: var(--gold); text-align: center; }
 
 .service-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 15px;
-    padding: 20px var(--safe-area);
+    gap: 25px;
+    padding: 20px var(--safe-area) 100px;
 }
-
-@media (min-width: 768px) { .service-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 768px) { .service-grid { grid-template-columns: repeat(3, 1fr); } }
 
 .card {
     background: var(--slate);
     border: 1px solid #333;
-    padding: 25px;
-    border-radius: 2px;
-    display: flex;
-    flex-direction: column;
+    overflow: hidden;
+    transition: 0.3s;
 }
+.card:hover { border-color: var(--gold); }
+.card-img { width: 100%; height: 200px; object-fit: cover; }
+.card-body { padding: 25px; }
+.card h3 { font-family: 'Playfair Display'; font-size: 1.4rem; margin-bottom: 10px; }
+.card-price { color: var(--gold); font-weight: 700; font-size: 1.2rem; margin-bottom: 15px; display: block; }
 
-.card h3 { font-family: 'Playfair Display'; font-size: 1.3rem; margin-bottom: 8px; }
-.card .desc { font-size: 0.8rem; color: #888; margin-bottom: 20px; line-height: 1.4; }
-
-.card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: auto;
+/* Service Detail Page */
+.detail-header {
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
-
-.price-tag { font-weight: 700; color: var(--gold); font-size: 1.1rem; }
-
-/* Quantity Selector */
-.qty-box {
-    display: flex;
-    align-items: center;
-    background: #000;
-    border: 1px solid #444;
-    border-radius: 4px;
-    padding: 4px;
+.detail-content {
+    max-width: 800px;
+    margin: -100px auto 100px;
+    background: var(--onyx);
+    padding: 40px var(--safe-area);
+    border: 1px solid #333;
+    position: relative;
+    z-index: 10;
 }
-.qty-btn { background: none; border: none; color: white; padding: 5px 10px; cursor: pointer; font-size: 1rem; }
-.qty-num { width: 30px; text-align: center; font-size: 0.85rem; font-weight: 600; }
+.back-btn { margin-bottom: 20px; color: var(--gold); cursor: pointer; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
 
+/* Global Buttons & Inputs */
 .add-btn {
-    background: var(--gold);
-    color: var(--onyx);
-    border: none;
-    padding: 10px 15px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    border-radius: 2px;
-    margin-left: 10px;
+    background: var(--gold); color: var(--onyx); border: none;
+    padding: 15px 30px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 2px; cursor: pointer; width: 100%; font-size: 0.8rem;
+}
+.view-btn {
+    background: transparent; border: 1px solid #444; color: white;
+    padding: 10px 20px; font-size: 0.7rem; text-transform: uppercase;
+    letter-spacing: 1px; width: 100%; margin-top: 10px; cursor: pointer;
 }
 
-/* Mobile Checkout Drawer */
+/* Cart Drawer */
 #drawer {
     position: fixed; top: 0; right: -100%; width: 100%; height: 100%;
-    background: #050505; z-index: 2000; transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-    padding: 30px var(--safe-area); display: flex; flex-direction: column;
+    background: #050505; z-index: 2000; transition: 0.4s;
+    padding: 40px var(--safe-area); display: flex; flex-direction: column;
 }
 #drawer.active { right: 0; }
-
-.cart-item { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #222; }
+.cart-item { display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid #222; }
 
 /* Payment Badges */
-.pay-methods {
-    margin: 30px 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    opacity: 0.9;
-}
-.pay-methods img { height: 25px; filter: brightness(1.2); }
-.cashapp-icon { color: #00d632; font-weight: 900; font-size: 1.2rem; display: flex; align-items: center; gap: 5px; }
+.pay-bar { display: flex; justify-content: space-around; padding: 30px 0; font-size: 1.5rem; border-top: 1px solid #222; margin-top: 20px; }
+.pay-bar i { opacity: 0.8; }
+.cashapp { color: #00d632; font-weight: 800; }
 
-#overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:none; z-index: 1500; }
-
+#overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; z-index: 1500; }
 </style>
 </head>
 <body>
 
 <header>
-    <div class="brand">TRASHYCARLY <span>sanitation</span></div>
+    <div class="brand" onclick="showView('catalog')">TRASHYCARLY <span>exclusive</span></div>
     <div id="cart-btn" onclick="toggleCart()">
-        <i class="fa-solid fa-briefcase"></i> (<span id="count">0</span>)
+        RESERVATION (<span id="count">0</span>)
     </div>
 </header>
 
-<div class="hero">
-    <p>Mesquite • High-Grade • Hospitality</p>
-    <h1>The Architecture of Clean.</h1>
+<div id="catalog" class="view active">
+    <div class="hero">
+        <p>Premium Hospitality Sanitation</p>
+        <h1>Pure Excellence.</h1>
+    </div>
+    
+    <h2 class="section-title">Commercial Collections</h2>
+    <div class="service-grid" id="service-list">
+        </div>
 </div>
 
-<h2 class="section-title">Commercial & Industrial</h2>
-<div class="service-grid">
-    <div class="card">
-        <h3>Executive Office Tier</h3>
-        <p class="desc">Nightly sanitation for high-profile firms. Includes restrooms & glass.</p>
-        <div class="card-footer">
-            <span class="price-tag">$250</span>
-            <div style="display:flex;">
-                <div class="qty-box">
-                    <button class="qty-btn" onclick="changeQty('off', -1)">-</button>
-                    <span id="off-val" class="qty-num">1</span>
-                    <button class="qty-btn" onclick="changeQty('off', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Office Tier', 250, 'off-val')">Add</button>
+<div id="detail" class="view">
+    <div id="detail-img" class="detail-header"></div>
+    <div class="detail-content">
+        <div class="back-btn" onclick="showView('catalog')">← Back to Collections</div>
+        <h1 id="detail-title" style="font-family:'Playfair Display'; font-size: 2.5rem; margin-bottom: 10px;"></h1>
+        <span id="detail-price" class="card-price" style="font-size: 1.8rem;"></span>
+        <p id="detail-desc" style="color:#aaa; line-height: 1.8; margin-bottom: 40px;"></p>
+        
+        <div style="display:flex; gap:10px; margin-bottom: 20px;">
+            <div style="flex:1; background:#000; border:1px solid #333; display:flex; align-items:center; justify-content:space-between; padding:0 20px;">
+                <span>Quantity</span>
+                <input type="number" id="detail-qty" value="1" min="1" style="background:none; border:none; color:white; width:40px; text-align:center; padding:15px 0;">
             </div>
         </div>
-    </div>
-
-    <div class="card">
-        <h3>Medical Compliance Clean</h3>
-        <p class="desc">AORN & CDC standard sanitization for clinics and surgical centers.</p>
-        <div class="card-footer">
-            <span class="price-tag">$450</span>
-            <div style="display:flex;">
-                <div class="qty-box">
-                    <button class="qty-btn" onclick="changeQty('med', -1)">-</button>
-                    <span id="med-val" class="qty-num">1</span>
-                    <button class="qty-btn" onclick="changeQty('med', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Medical Clean', 450, 'med-val')">Add</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <h3>Industrial Kitchen Deep-Clean</h3>
-        <p class="desc">Heavy degreasing for luxury restaurant BOH and ventilation hoods.</p>
-        <div class="card-footer">
-            <span class="price-tag">$800</span>
-            <button class="add-btn" onclick="addToCart('Kitchen Deep-Clean', 800, null, 1)">Add to Cart</button>
-        </div>
-    </div>
-
-    <div class="card">
-        <h3>Post-Event Restoration</h3>
-        <p class="desc">Rapid reset for wedding venues, concerts, and corporate galas.</p>
-        <div class="card-footer">
-            <span class="price-tag">$1,200</span>
-            <button class="add-btn" onclick="addToCart('Event Restore', 1200, null, 1)">Add to Cart</button>
-        </div>
-    </div>
-</div>
-
-<h2 class="section-title">Maintenance Add-Ons</h2>
-<div class="service-grid">
-    <div class="card">
-        <h3>Floor Buffing / Waxing</h3>
-        <p class="desc">Price per 500 sq ft. High-speed burnishing for VCT and stone.</p>
-        <div class="card-footer">
-            <span class="price-tag">$175</span>
-            <div style="display:flex;">
-                <div class="qty-box">
-                    <button class="qty-btn" onclick="changeQty('flr', -1)">-</button>
-                    <span id="flr-val" class="qty-num">1</span>
-                    <button class="qty-btn" onclick="changeQty('flr', 1)">+</button>
-                </div>
-                <button class="add-btn" onclick="addToCart('Floor Buffing (x500sqft)', 175, 'flr-val')">Add</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <h3>Biohazard Fogging</h3>
-        <p class="desc">Electrostatic disinfection fogging for infection control.</p>
-        <div class="card-footer">
-            <span class="price-tag">$300</span>
-            <button class="add-btn" onclick="addToCart('Bio-Fogging', 300, null, 1)">Add</button>
-        </div>
+        <button class="add-btn" id="detail-add-action">Secure to Reservation</button>
     </div>
 </div>
 
@@ -254,63 +183,127 @@ header {
         <h2 style="font-family:'Playfair Display'; font-size:2rem;">Your Request</h2>
         <span onclick="toggleCart()" style="font-size:2rem; cursor:pointer;">&times;</span>
     </div>
-
     <div id="cart-items" style="flex-grow:1; overflow-y:auto;"></div>
-
-    <div style="border-top:1px solid var(--gold); padding-top:20px;">
+    <div style="margin-top:auto;">
         <div style="display:flex; justify-content:space-between; font-size:1.6rem; font-family:'Playfair Display'; margin-bottom:20px;">
             <span>Investment</span>
             <span id="total-val" style="color:var(--gold)">$0</span>
         </div>
-
-        <div class="pay-methods">
-            <i class="fab fa-apple-pay" style="font-size:2rem;"></i>
-            <i class="fab fa-google-pay" style="font-size:2.5rem;"></i>
-            <span class="cashapp-icon">
-                <i class="fa-solid fa-dollar-sign"></i> CashApp
-            </span>
+        <div class="pay-bar">
+            <i class="fab fa-apple-pay"></i>
+            <i class="fab fa-google-pay"></i>
+            <span class="cashapp">$ CashApp</span>
         </div>
-
-        <button class="add-btn" style="width:100%; padding:20px; font-size:0.9rem;" onclick="alert('Redirecting to Secure Gateway: Apple / Google / CashApp / Card')">Finalize Reservation</button>
-        <p style="text-align:center; font-size:0.6rem; color:#555; margin-top:15px; text-transform:uppercase; letter-spacing:2px;">Secured by 256-Bit SSL Encryption</p>
+        <button class="add-btn" onclick="alert('Proceeding to Apple Pay / Google Pay / CashApp Gateway...')">Complete Booking</button>
     </div>
 </div>
 
 <script>
+const services = [
+    {
+        id: 'exec',
+        name: 'Executive Office Tier',
+        price: 350,
+        img: 'http://googleusercontent.com/image_collection/image_retrieval/12841122644067351737_2',
+        short: 'High-profile sanitation for professional firms.',
+        desc: 'Our flagship commercial service designed for high-end law firms, corporate headquarters, and executive suites. Includes surgical-grade surface disinfection, panoramic window detailing, and premium floor maintenance.'
+    },
+    {
+        id: 'med',
+        name: 'Medical Compliance',
+        price: 550,
+        img: 'http://googleusercontent.com/image_collection/image_retrieval/12841122644067351737_3',
+        short: 'Sterile cleaning for surgical and clinic environments.',
+        desc: 'Full AORN & CDC compliant sanitization. We utilize electrostatic fogging and medical-grade disinfectants to ensure a zero-pathogen environment for your patients and staff.'
+    },
+    {
+        id: 'kitchen',
+        name: 'Industrial Kitchen',
+        price: 850,
+        img: 'http://googleusercontent.com/image_collection/image_retrieval/12841122644067351737_5',
+        short: 'Heavy degreasing and BOH restoration.',
+        desc: 'The ultimate deep-clean for luxury restaurant kitchens. We focus on hood ventilation, behind-equipment accumulation, and high-temperature floor sanitation.'
+    },
+    {
+        id: 'estate',
+        name: 'Bespoke Estate Clean',
+        price: 450,
+        img: 'http://googleusercontent.com/image_collection/image_retrieval/12841122644067351737_8',
+        short: 'White-glove residential care for large estates.',
+        desc: 'Designed for properties over 4,000 sq ft. This service includes museum-grade dusting, marble floor polishing, and specialized care for high-value architectural materials.'
+    }
+];
+
 let cart = [];
 
-function changeQty(id, delta) {
-    const el = document.getElementById(id + '-val');
-    let val = parseInt(el.innerText) + delta;
-    if (val < 1) val = 1;
-    el.innerText = val;
+function init() {
+    const list = document.getElementById('service-list');
+    services.forEach(s => {
+        list.innerHTML += `
+            <div class="card">
+                <img src="${s.img}" class="card-img" alt="${s.name}">
+                <div class="card-body">
+                    <h3>${s.name}</h3>
+                    <span class="card-price">$${s.price}</span>
+                    <p style="font-size:0.8rem; color:#888; margin-bottom:20px;">${s.short}</p>
+                    <button class="add-btn" onclick="quickAdd('${s.id}')">Add to Cart</button>
+                    <button class="view-btn" onclick="openDetail('${s.id}')">View Details</button>
+                </div>
+            </div>
+        `;
+    });
 }
 
-function toggleCart() {
-    document.getElementById('drawer').classList.toggle('active');
-    const overlay = document.getElementById('overlay');
-    overlay.style.display = (overlay.style.display === 'block') ? 'none' : 'block';
+function showView(viewId) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById(viewId).classList.add('active');
+    window.scrollTo(0,0);
 }
 
-function addToCart(name, price, qtyId, staticQty = null) {
-    const qty = staticQty ? staticQty : parseInt(document.getElementById(qtyId).innerText);
+function openDetail(id) {
+    const s = services.find(item => item.id === id);
+    document.getElementById('detail-img').style.backgroundImage = `url(${s.img})`;
+    document.getElementById('detail-title').innerText = s.name;
+    document.getElementById('detail-price').innerText = '$' + s.price;
+    document.getElementById('detail-desc').innerText = s.desc;
+    document.getElementById('detail-qty').value = 1;
+    document.getElementById('detail-add-action').onclick = () => {
+        const q = parseInt(document.getElementById('detail-qty').value);
+        addToCart(s.name, s.price, q);
+    };
+    showView('detail');
+}
+
+function quickAdd(id) {
+    const s = services.find(item => item.id === id);
+    addToCart(s.name, s.price, 1);
+}
+
+function addToCart(name, price, qty) {
     const existing = cart.find(i => i.name === name);
     if(existing) { existing.qty += qty; } else { cart.push({name, price, qty}); }
     updateUI();
-    if(!document.getElementById('drawer').classList.contains('active')) toggleCart();
+    toggleCart();
+}
+
+function toggleCart() {
+    const d = document.getElementById('drawer');
+    const o = document.getElementById('overlay');
+    d.classList.toggle('active');
+    o.style.display = (o.style.display === 'block') ? 'none' : 'block';
 }
 
 function updateUI() {
-    const content = document.getElementById('cart-items');
+    const itemsCont = document.getElementById('cart-items');
     let total = 0, count = 0;
-    content.innerHTML = '';
+    itemsCont.innerHTML = '';
     cart.forEach(item => {
         total += (item.price * item.qty);
         count += item.qty;
-        content.innerHTML += `
+        itemsCont.innerHTML += `
             <div class="cart-item">
                 <div>
-                    <div style="font-weight:700; font-size:0.9rem;">${item.name}</div>
+                    <div style="font-weight:700;">${item.name}</div>
                     <div style="font-size:0.75rem; color:var(--gold)">${item.qty} units @ $${item.price}</div>
                 </div>
                 <div style="font-weight:700">$${item.price * item.qty}</div>
@@ -319,6 +312,8 @@ function updateUI() {
     document.getElementById('count').innerText = count;
     document.getElementById('total-val').innerText = '$' + total.toLocaleString();
 }
+
+init();
 </script>
 
 </body>
