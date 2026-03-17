@@ -4,217 +4,124 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TrashyCarly Cleaning</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
-  /* Reset & base styles */
-  * {margin:0;padding:0;box-sizing:border-box;}
-  body {font-family:'Roboto',sans-serif;color:#333;line-height:1.6;}
-  a {text-decoration:none;color:inherit;}
-  img {max-width:100%;border-radius:8px;}
-
-  /* Header / Hero */
-  header {
-    background: url('https://images.unsplash.com/photo-1581579188103-0d7485697999?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-    height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:white;
-  }
-  header h1 {font-size:3rem; margin-bottom:1rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.5);}
-  header p {font-size:1.5rem; margin-bottom:2rem; text-shadow: 1px 1px 5px rgba(0,0,0,0.5);}
-  header .cta-btn {background:#1e88e5; color:white; padding:15px 30px; font-size:1.2rem; border-radius:6px; transition:0.3s;}
-  header .cta-btn:hover {background:#1565c0;}
-
-  /* Navigation */
-  nav {position:fixed; top:0; width:100%; background:white; box-shadow:0 2px 10px rgba(0,0,0,0.1); z-index:1000;}
-  nav ul {display:flex; justify-content:center; padding:1rem;}
-  nav li {list-style:none; margin:0 15px; font-weight:bold;}
-  nav a {color:#1e88e5; font-weight:600; transition:0.3s;}
-  nav a:hover {color:#1565c0;}
-
-  /* Sections */
-  section {padding:80px 20px;}
-  .container {max-width:1200px; margin:0 auto;}
-
-  /* Services */
-  .services {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; text-align:center;}
-  .service-card {background:white; padding:30px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.1); transition:0.3s;}
-  .service-card:hover {transform:translateY(-5px);}
-  .service-card i {font-size:3rem; color:#1e88e5; margin-bottom:15px;}
-  .service-card h3 {margin-bottom:10px; font-size:1.3rem; color:#1565c0;}
-
-  /* Before & After Gallery */
-  .gallery {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
-  .gallery img {transition:0.3s;}
-  .gallery img:hover {transform:scale(1.05);}
-
-  /* Why Choose Us */
-  .features {display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; text-align:center;}
-  .feature-card {background:white; padding:30px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.1);}
-  .feature-card i {font-size:2.5rem; color:#1e88e5; margin-bottom:10px;}
-  .feature-card h3 {margin-bottom:10px; color:#1565c0;}
-
-  /* Testimonials */
-  .testimonials {display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px;}
-  .testimonial {background:#e3f2fd; padding:30px; border-radius:12px; font-style:italic; box-shadow:0 4px 15px rgba(0,0,0,0.1);}
-
-  /* Booking Form */
-  form {background:white; padding:40px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.1);}
-  input, select, textarea {width:100%; padding:12px; margin-bottom:20px; border-radius:6px; border:1px solid #ccc;}
-  button {background:#1e88e5; color:white; padding:15px; width:100%; font-size:1rem; border:none; border-radius:6px; cursor:pointer; transition:0.3s;}
-  button:hover {background:#1565c0;}
-  .confirmation {color:green; font-weight:bold; margin-top:10px; display:none;}
-
-  /* About Us */
-  .about {text-align:center; max-width:900px; margin:auto;}
-  .about img {border-radius:12px; margin-top:20px;}
-
-  /* Footer */
-  footer {background:#111; color:white; text-align:center; padding:30px; margin-top:50px;}
-
-  /* Responsive */
-  @media(max-width:768px){
-    header h1 {font-size:2.2rem;}
-    header p {font-size:1.2rem;}
-    nav ul {flex-direction:column;}
-    nav li {margin:10px 0;}
-  }
+body {font-family: Arial; margin:0; background:#f5f7fa;}
+header {background:#1e88e5; color:white; padding:60px 20px; text-align:center;}
+h1 {margin:0;}
+section {padding:40px 20px;}
+button {background:#1e88e5; color:white; padding:12px 20px; border:none; border-radius:5px; cursor:pointer;}
+.hidden {display:none;}
+.card {background:white; padding:20px; margin:10px 0; border-radius:10px;}
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-
-<!-- Navigation -->
-<nav>
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#why">Why Choose Us</a></li>
-    <li><a href="#booking">Book Now</a></li>
-    <li><a href="#about">About Us</a></li>
-  </ul>
-</nav>
-
-<!-- Hero -->
-<header id="home">
-  <h1>Your Home, Sparkling Clean</h1>
-  <p>Professional, Eco-Friendly Cleaning Services for Your Home or Office</p>
-  <a href="#booking" class="cta-btn">Get a Free Quote</a>
-</header>
-
-<!-- Services -->
-<section id="services">
-  <div class="container">
-    <h2 style="text-align:center; margin-bottom:40px;">Our Services</h2>
-    <div class="services">
-      <div class="service-card">
-        <i class="fa-solid fa-house"></i>
-        <h3>Residential Cleaning</h3>
-        <p>Regular, deep, move-in/move-out cleaning for homes and apartments.</p>
-      </div>
-      <div class="service-card">
-        <i class="fa-solid fa-building"></i>
-        <h3>Commercial Cleaning</h3>
-        <p>Office janitorial, retail spaces, and post-construction cleanup.</p>
-      </div>
-      <div class="service-card">
-        <i class="fa-solid fa-broom"></i>
-        <h3>Deep Cleaning</h3>
-        <p>Thorough, eco-friendly deep cleaning for every corner of your property.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Gallery -->
-<section id="gallery">
-  <div class="container">
-    <h2 style="text-align:center; margin-bottom:40px;">Before & After</h2>
-    <div class="gallery">
-      <img src="https://images.unsplash.com/photo-1560184897-3f6f6c3f3edb?auto=format&fit=crop&w=800&q=80" alt="Before Cleaning">
-      <img src="https://images.unsplash.com/photo-1616627890610-6eaeef2fbc8e?auto=format&fit=crop&w=800&q=80" alt="After Cleaning">
-      <img src="https://images.unsplash.com/photo-1600607686997-04b8e6e19f24?auto=format&fit=crop&w=800&q=80" alt="Before Cleaning">
-      <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80" alt="After Cleaning">
-    </div>
-  </div>
-</section>
-
-<!-- Why Choose Us -->
-<section id="why" style="background:#e3f2fd;">
-  <div class="container">
-    <h2 style="text-align:center; margin-bottom:40px;">Why Choose Us</h2>
-    <div class="features">
-      <div class="feature-card">
-        <i class="fa-solid fa-leaf"></i>
-        <h3>Eco-Friendly</h3>
-        <p>We use environmentally safe products for a healthy home and planet.</p>
-      </div>
-      <div class="feature-card">
-        <i class="fa-solid fa-thumbs-up"></i>
-        <h3>Reliable</h3>
-        <p>Professional, punctual, and trustworthy cleaning every time.</p>
-      </div>
-      <div class="feature-card">
-        <i class="fa-solid fa-star"></i>
-        <h3>Customer Satisfaction</h3>
-        <p>We guarantee a sparkling clean space or we make it right.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonials -->
-<section id="testimonials">
-  <div class="container">
-    <h2 style="text-align:center; margin-bottom:40px;">Testimonials</h2>
-    <div class="testimonials">
-      <div class="testimonial">“TrashyCarly transformed my apartment! Highly recommend their eco-friendly cleaning.” – Sarah J.</div>
-      <div class="testimonial">“Professional, punctual, and thorough. My office has never been cleaner.” – Michael T.</div>
-      <div class="testimonial">“Amazing deep cleaning service, every corner was spotless.” – Emma R.</div>
-    </div>
-  </div>
-</section>
-
-<!-- Booking Form -->
-<section id="booking">
-  <div class="container">
-    <h2 style="text-align:center; margin-bottom:40px;">Book Your Cleaning</h2>
-    <form action="https://formspree.io/f/mreyywlq" method="POST" onsubmit="showConfirmation(event)">
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="text" name="phone" placeholder="Phone Number">
-      <input type="text" name="address" placeholder="Cleaning Address">
-      <select name="service">
-        <option>Residential Cleaning</option>
-        <option>Commercial Cleaning</option>
-        <option>Deep Cleaning</option>
-      </select>
-      <input type="date" name="date">
-      <textarea name="notes" placeholder="Special instructions"></textarea>
-      <button type="submit">Book Now</button>
-      <div id="confirmation" class="confirmation">Thank you! Your cleaning is booked.</div>
-    </form>
-  </div>
-</section>
-
-<!-- About Us -->
-<section id="about" style="background:#f5f7fa;">
-  <div class="container about">
-    <h2>About TrashyCarly</h2>
-    <p>TrashyCarly was founded with a simple mission: to make homes and offices cleaner, healthier, and eco-friendly. Our professional team cares about every detail, uses safe cleaning products, and ensures a spotless, fresh space every time. We value trust, reliability, and customer satisfaction above all.</p>
-    <img src="https://images.unsplash.com/photo-1605902711622-cfb43c44392b?auto=format&fit=crop&w=800&q=80" alt="Cleaning Team">
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  TrashyCarly Cleaning © 2026 | Designed for a sparkling clean experience
-</footer>
 
 <script>
-function showConfirmation(e){
-  e.preventDefault();
-  document.getElementById('confirmation').style.display='block';
-  e.target.submit();
+function toggleWhy(){
+  let x = document.getElementById("whyText");
+  x.style.display = x.style.display === "none" ? "block" : "none";
 }
 </script>
+</head>
+
+<body>
+
+<header>
+<h1>Your Home, Sparkling Clean</h1>
+<p>Your time is precious. Let us do the cleaning</p>
+<br>
+<button onclick="document.getElementById('booking').scrollIntoView()">Get a Free Quote</button>
+</header>
+
+<section>
+<h2>Our Services</h2>
+
+<div class="card">
+<h3>Regular Cleaning (Maintenance)</h3>
+<p>Consistent upkeep including dusting, vacuuming, mopping, and bathroom/kitchen sanitation.</p>
+</div>
+
+<div class="card">
+<h3>Deep Cleaning</h3>
+<p>A top-to-bottom service targeting hard-to-reach spots, baseboards, and intensive buildup removal.</p>
+</div>
+
+<div class="card">
+<h3>Move-In/Move-Out Cleaning</h3>
+<p>Specialized cleaning for empty homes to ensure deposit returns, including cabinets, appliances, and fixtures.</p>
+</div>
+
+<div class="card">
+<h3>Specialized Add-ons</h3>
+<p>Oven cleaning, refrigerator cleaning, and interior window cleaning available.</p>
+</div>
+
+</section>
+
+<section>
+<h2>Commercial Cleaning</h2>
+
+<div class="card">
+<h3>Janitorial Services</h3>
+<p>We specialize in janitorial services for offices, arenas, schools, and more.</p>
+</div>
+
+<div class="card">
+<h3>Floor Cleaning & Polishing</h3>
+<p>Keep your floors glowing like new.</p>
+</div>
+
+<div class="card">
+<h3>Carpet Cleaning</h3>
+<p>Protect your carpet and extend its life.</p>
+</div>
+
+<div class="card">
+<h3>Office Cleaning</h3>
+<p>Nightly, weekly, and bi-weekly cleaning options with disinfecting services.</p>
+</div>
+
+</section>
+
+<section>
+<h2>Popular Add-On Services (A La Carte)</h2>
+
+<div class="card">Inside Oven: $25 - $35</div>
+<div class="card">Inside Refrigerator: $25 - $35</div>
+<div class="card">Interior Windows: $5 - $10 per window</div>
+<div class="card">Laundry / Folding: $15 - $20 per load</div>
+
+</section>
+
+<section>
+<h2 onclick="toggleWhy()" style="cursor:pointer;">
+Why Choose Us (Click Me)
+</h2>
+
+<div id="whyText" class="hidden card">
+<p><b>Trusted & Vetted Professionals:</b> Our team is background-checked, insured, and trained.</p>
+<p><b>Consistent Quality:</b> We don’t cut corners; we clean them.</p>
+<p><b>100% Satisfaction Guarantee:</b> Not happy? We’ll fix it free.</p>
+<p><b>Tailored to Your Life:</b> Customized cleaning plans for your needs.</p>
+</div>
+
+</section>
+
+<section id="booking">
+<h2>Book a Cleaning</h2>
+
+<form action="https://formspree.io/f/mreyywlq" method="POST">
+<input type="text" name="name" placeholder="Name" required><br><br>
+<input type="email" name="email" placeholder="Email" required><br><br>
+<select name="service">
+<option>Regular Cleaning</option>
+<option>Deep Cleaning</option>
+<option>Move-In/Move-Out</option>
+<option>Commercial Cleaning</option>
+</select><br><br>
+<button type="submit">Book Now</button>
+</form>
+
+</section>
+
 </body>
 </html>
