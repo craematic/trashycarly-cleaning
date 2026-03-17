@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TrashyCarly Cleaning | Premium Residential & Commercial</title>
+<title>TrashyCarly Cleaning | Boutique Service | Mesquite, TX</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 
@@ -11,9 +11,9 @@
 /* Reset & Luxury Base */
 * {box-sizing: border-box; margin:0; padding:0;}
 :root {
-    --primary: #1a1a1a;    /* Deep Midnight */
-    --accent: #d4af37;     /* Soft Gold/Champagne */
-    --bg-light: #fdfdfd;   /* Off-white */
+    --primary: #1a1a1a;    /* Midnight Charcoal */
+    --accent: #d4af37;     /* Champagne Gold */
+    --bg-light: #fdfdfd;   
     --text-muted: #666;
 }
 
@@ -22,211 +22,237 @@ body {
     background: var(--bg-light);
     color: var(--primary);
     line-height: 1.7;
-    overflow-x: hidden;
-}
-
-/* Gritty Grain Texture Overlay */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: url('https://www.transparenttextures.com/patterns/stardust.png');
-    opacity: 0.03;
-    pointer-events: none;
-    z-index: 9999;
 }
 
 .container {max-width:1100px; margin:0 auto; padding: 0 20px;}
-section {padding:100px 0;}
-h1, h2, h3 {font-family: 'Playfair Display', serif; letter-spacing: -0.5px;}
+section {padding:80px 0;}
+h1, h2, h3 {font-family: 'Playfair Display', serif;}
 
-/* Hero Section */
+/* HERO SECTION */
 header {
-    height: 90vh;
+    height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                 url('https://images.unsplash.com/photo-1603614486387-276f74fcbe2a?auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
     background-position: center;
     color: white;
-    position: relative;
 }
 
-header h1 {font-size: 4.5em; line-height: 1.1; margin-bottom: 10px;}
-header p {font-size: 1.2em; text-transform: uppercase; letter-spacing: 4px; font-weight: 300; margin-bottom: 30px;}
-
-.btn-primary {
+/* CART DRAWER */
+#cart-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
     background: var(--accent);
     color: var(--primary);
-    text-transform: uppercase;
-    font-size: 0.8em;
-    font-weight: 600;
-    letter-spacing: 2px;
-    padding: 20px 45px;
-    border: none;
-    border-radius: 0; /* Sharp edges for a high-grade look */
+    padding: 15px 25px;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.4s ease;
+    z-index: 1001;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
-.btn-primary:hover {
+
+#cart-drawer {
+    position: fixed;
+    top: 0; right: -400px;
+    width: 350px;
+    height: 100vh;
     background: white;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    z-index: 1002;
+    transition: 0.4s ease;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Service Cards */
-.section-title {text-align: center; margin-bottom: 60px;}
-.section-title h2 {font-size: 2.8em;}
-.section-title .line {width: 60px; height: 3px; background: var(--accent); margin: 20px auto;}
+#cart-drawer.active { right: 0; }
 
-.services-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;}
+.cart-items { flex-grow: 1; overflow-y: auto; margin: 20px 0; border-top: 1px solid #eee; }
+.cart-item { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #eee; font-size: 0.9em; }
+.remove-item { color: red; cursor: pointer; font-size: 0.8em; }
+
+/* SERVICES GRID */
+.section-title {text-align: center; margin-bottom: 50px;}
+.services-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;}
 
 .card {
     background: white;
-    padding: 50px 40px;
+    padding: 40px;
     border: 1px solid #eee;
-    transition: all 0.4s ease;
-    position: relative;
+    text-align: center;
+    transition: 0.3s;
 }
-.card:hover {
-    border-color: var(--accent);
-    transform: translateY(-10px);
-}
-.card h3 {font-size: 1.6em; margin-bottom: 15px;}
-.card p {color: var(--text-muted); font-size: 0.95em;}
+.card:hover { border-color: var(--accent); transform: translateY(-5px); }
+.price { font-family: 'Playfair Display', serif; font-size: 1.8em; color: var(--accent); margin: 15px 0; display: block;}
 
-/* Pricing Add-ons Table Style */
-.addon-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 0;
-    border-bottom: 1px solid #eee;
-    font-weight: 400;
-}
-.addon-item span {font-family: 'Playfair Display', serif; font-weight: 700; color: var(--accent);}
-
-/* Booking Form - The "Glass" Look */
-#booking {
+.btn-add {
     background: var(--primary);
     color: white;
+    border: none;
+    padding: 12px 25px;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 15px;
 }
-form {max-width: 600px; margin: 0 auto; display: grid; gap: 20px;}
-form input, form select {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+.btn-add:hover { background: var(--accent); color: var(--primary); }
+
+/* ADD-ONS GRID */
+.addons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+.addon-card {
+    border: 1px solid #eee;
     padding: 20px;
-    color: white;
-    font-family: inherit;
+    text-align: center;
 }
-form button {background: var(--accent); color: var(--primary); padding: 20px; font-weight: 700; text-transform: uppercase; border: none; cursor: pointer;}
+.addon-card h4 { font-size: 0.9em; margin-bottom: 5px;}
+.addon-card .price { font-size: 1.2em; margin: 5px 0;}
 
-/* Footer */
-footer {padding: 50px; text-align: center; background: #111; color: #555; font-size: 0.8em; letter-spacing: 1px;}
-
-@media (max-width: 768px) {
-    header h1 {font-size: 2.5em;}
+/* OVERLAY */
+#overlay {
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 1000;
 }
 </style>
 </head>
 <body>
 
+<div id="cart-icon" onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</div>
+<div id="overlay" onclick="toggleCart()"></div>
+
+<div id="cart-drawer">
+    <h2 style="font-family:'Playfair Display'">Your Selection</h2>
+    <div class="cart-items" id="cart-content">
+        </div>
+    <div style="border-top: 2px solid var(--primary); padding-top: 20px;">
+        <h3>Total: $<span id="cart-total">0</span></h3>
+        <button class="btn-add" style="width: 100%; margin-top: 20px;" onclick="alert('Proceeding to Mesquite, TX Scheduling...')">Checkout / Book</button>
+    </div>
+</div>
+
 <header>
     <div class="container">
-        <p>A New Standard of Clean</p>
-        <h1>Impeccable Spaces.<br>Zero Compromise.</h1>
-        <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Request an Invite / Quote</button>
+        <h1 style="font-size: 3.5em;">Boutique Care for Mesquite Homes</h1>
     </div>
 </header>
 
 <section>
     <div class="container">
         <div class="section-title">
-            <h2>Residential Excellence</h2>
-            <div class="line"></div>
+            <h2>The Residential Tiers</h2>
+            <p>Premium 2026 Pricing for Mesquite, Texas</p>
         </div>
         <div class="services-grid">
             <div class="card">
                 <h3>The Maintenance</h3>
-                <p>Designed for the modern schedule. Consistent, meticulous upkeep that keeps your sanctuary pristine.</p>
+                <span class="price">$185</span>
+                <p>Bi-weekly or Monthly upkeep for homes up to 2,000 sq ft.</p>
+                <button class="btn-add" onclick="addToCart('The Maintenance', 185)">Add to Cart</button>
             </div>
             <div class="card">
                 <h3>The Restoration</h3>
-                <p>A deep-dive service targeting the details often missed. Baseboards, vents, and heavy sanitation.</p>
+                <span class="price">$345</span>
+                <p>Deep-dive sanitation including baseboards and heavy detail work.</p>
+                <button class="btn-add" onclick="addToCart('The Restoration', 345)">Add to Cart</button>
             </div>
             <div class="card">
                 <h3>The Transition</h3>
-                <p>Move-in/Move-out services for those who demand a "white-glove" standard before the first box arrives.</p>
+                <span class="price">$495</span>
+                <p>Move-In/Out excellence. Includes inside cabinets and appliances.</p>
+                <button class="btn-add" onclick="addToCart('The Transition', 495)">Add to Cart</button>
             </div>
         </div>
     </div>
 </section>
 
-<section style="background: #f4f4f4;">
-    <div class="container">
-        <div class="section-title">
-            <h2>Commercial Portfolio</h2>
-            <div class="line"></div>
-        </div>
-        <div class="services-grid">
-            <div class="card">
-                <h3>Janitorial Luxe</h3>
-                <p>High-end cleaning for arenas, schools, and flagship offices where first impressions are everything.</p>
-            </div>
-            <div class="card">
-                <h3>Hardwood & Stone</h3>
-                <p>Specialized polishing and restoration for premium flooring materials.</p>
-            </div>
-            <div class="card">
-                <h3>Executive Office</h3>
-                <p>Custom cleaning schedules tailored to the needs of busy corporate environments.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section>
+<section style="background: #fafafa;">
     <div class="container">
         <div class="section-title">
             <h2>Boutique Add-Ons</h2>
-            <p>Elevate your service with our a-la-carte menu.</p>
-            <div class="line"></div>
         </div>
-        <div style="max-width: 700px; margin: 0 auto;">
-            <div class="addon-item">Interior Culinary Oven <span>$35</span></div>
-            <div class="addon-item">Refrigeration Detailing <span>$35</span></div>
-            <div class="addon-item">Precision Window Cleaning <span>$10 / ea</span></div>
-            <div class="addon-item">Laundry & Textile Care <span>$20 / load</span></div>
+        <div class="addons-grid">
+            <div class="addon-card">
+                <h4>Culinary Oven Care</h4>
+                <span class="price">$45</span>
+                <button class="btn-add" onclick="addToCart('Oven Care', 45)">Add</button>
+            </div>
+            <div class="addon-card">
+                <h4>Refrigerator Care</h4>
+                <span class="price">$45</span>
+                <button class="btn-add" onclick="addToCart('Fridge Care', 45)">Add</button>
+            </div>
+            <div class="addon-card">
+                <h4>Textile/Laundry</h4>
+                <span class="price">$25</span>
+                <button class="btn-add" onclick="addToCart('Laundry Load', 25)">Add</button>
+            </div>
+            <div class="addon-card">
+                <h4>Window Precision</h4>
+                <span class="price">$12</span>
+                <button class="btn-add" onclick="addToCart('Interior Window', 12)">Add</button>
+            </div>
         </div>
     </div>
 </section>
 
-<section id="booking">
-    <div class="container">
-        <div class="section-title">
-            <h2 style="color: white;">Secure Your Date</h2>
-            <div class="line"></div>
-        </div>
-        <form action="https://formspree.io/f/mreyywlq" method="POST">
-            <input type="text" name="name" placeholder="Full Name" required>
-            <input type="email" name="email" placeholder="Email Address" required>
-            <select name="service">
-                <option>Select Tier: The Maintenance</option>
-                <option>Select Tier: The Restoration</option>
-                <option>Select Tier: The Transition</option>
-                <option>Select Tier: Commercial Portfolio</option>
-            </select>
-            <button type="submit">Initialize Booking</button>
-        </form>
-    </div>
-</section>
+<script>
+let cart = [];
 
-<footer>
-    <p>© 2026 TRASHYCARLY CLEANING | BEYOND THE SURFACE</p>
-</footer>
+function toggleCart() {
+    document.getElementById('cart-drawer').classList.toggle('active');
+    let overlay = document.getElementById('overlay');
+    overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
+}
+
+function addToCart(name, price) {
+    cart.push({name, price});
+    updateCartUI();
+    // Optional: open cart when item is added
+    if(!document.getElementById('cart-drawer').classList.contains('active')) toggleCart();
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartUI();
+}
+
+function updateCartUI() {
+    const cartContent = document.getElementById('cart-content');
+    const cartCount = document.getElementById('cart-count');
+    const cartTotal = document.getElementById('cart-total');
+    
+    cartContent.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price;
+        cartContent.innerHTML += `
+            <div class="cart-item">
+                <div>
+                    <strong>${item.name}</strong><br>
+                    $${item.price}
+                </div>
+                <span class="remove-item" onclick="removeFromCart(${index})">Remove</span>
+            </div>
+        `;
+    });
+
+    cartCount.innerText = cart.length;
+    cartTotal.innerText = total;
+}
+</script>
 
 </body>
 </html>
