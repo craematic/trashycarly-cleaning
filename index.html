@@ -28,20 +28,6 @@ body {
 section {padding:80px 0;}
 h1, h2, h3 {font-family: 'Playfair Display', serif;}
 
-/* HERO SECTION */
-header {
-    height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('https://images.unsplash.com/photo-1603614486387-276f74fcbe2a?auto=format&fit=crop&w=1920&q=80');
-    background-size: cover;
-    background-position: center;
-    color: white;
-}
-
 /* CART DRAWER */
 #cart-icon {
     position: fixed;
@@ -74,12 +60,28 @@ header {
 
 .cart-items { flex-grow: 1; overflow-y: auto; margin: 20px 0; border-top: 1px solid #eee; }
 .cart-item { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #eee; font-size: 0.9em; }
-.remove-item { color: red; cursor: pointer; font-size: 0.8em; }
+.remove-item { color: #cc0000; cursor: pointer; font-size: 0.8em; }
+
+/* HERO SECTION */
+header {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://images.unsplash.com/photo-1603614486387-276f74fcbe2a?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+/* SECTION HEADERS */
+.section-title {text-align: center; margin-bottom: 50px;}
+.section-title .line {width: 50px; height: 2px; background: var(--accent); margin: 15px auto;}
 
 /* SERVICES GRID */
-.section-title {text-align: center; margin-bottom: 50px;}
 .services-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;}
-
 .card {
     background: white;
     padding: 40px;
@@ -103,21 +105,27 @@ header {
 }
 .btn-add:hover { background: var(--accent); color: var(--primary); }
 
-/* ADD-ONS GRID */
-.addons-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
+/* YOUTUBE SECTION: THE ATMOSPHERE */
+#vibe { background: #111; color: white; text-align: center; }
+.video-container {
+    max-width: 800px;
+    margin: 40px auto 0;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border: 1px solid var(--accent);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
-.addon-card {
-    border: 1px solid #eee;
-    padding: 20px;
-    text-align: center;
+.video-container iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
 }
-.addon-card h4 { font-size: 0.9em; margin-bottom: 5px;}
-.addon-card .price { font-size: 1.2em; margin: 5px 0;}
 
-/* OVERLAY */
+/* FOOTER */
+footer {padding: 50px; text-align: center; background: #0a0a0a; color: #555; font-size: 0.8em; letter-spacing: 1px;}
+
 #overlay {
     position: fixed;
     top:0; left:0; width:100%; height:100%;
@@ -134,8 +142,7 @@ header {
 
 <div id="cart-drawer">
     <h2 style="font-family:'Playfair Display'">Your Selection</h2>
-    <div class="cart-items" id="cart-content">
-        </div>
+    <div class="cart-items" id="cart-content"></div>
     <div style="border-top: 2px solid var(--primary); padding-top: 20px;">
         <h3>Total: $<span id="cart-total">0</span></h3>
         <button class="btn-add" style="width: 100%; margin-top: 20px;" onclick="alert('Proceeding to Mesquite, TX Scheduling...')">Checkout / Book</button>
@@ -144,7 +151,8 @@ header {
 
 <header>
     <div class="container">
-        <h1 style="font-size: 3.5em;">Boutique Care for Mesquite Homes</h1>
+        <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.9em; margin-bottom: 10px;">Boutique Care | Mesquite, TX</p>
+        <h1 style="font-size: 3.5em;">Impeccable Spaces.<br>Zero Compromise.</h1>
     </div>
 </header>
 
@@ -152,7 +160,7 @@ header {
     <div class="container">
         <div class="section-title">
             <h2>The Residential Tiers</h2>
-            <p>Premium 2026 Pricing for Mesquite, Texas</p>
+            <div class="line"></div>
         </div>
         <div class="services-grid">
             <div class="card">
@@ -177,35 +185,28 @@ header {
     </div>
 </section>
 
-<section style="background: #fafafa;">
+<section id="vibe">
     <div class="container">
         <div class="section-title">
-            <h2>Boutique Add-Ons</h2>
+            <h2 style="color: white;">The Atmosphere</h2>
+            <p style="color: var(--accent); font-style: italic;">Curated rhythms for a premium cleaning experience.</p>
+            <div class="line"></div>
         </div>
-        <div class="addons-grid">
-            <div class="addon-card">
-                <h4>Culinary Oven Care</h4>
-                <span class="price">$45</span>
-                <button class="btn-add" onclick="addToCart('Oven Care', 45)">Add</button>
-            </div>
-            <div class="addon-card">
-                <h4>Refrigerator Care</h4>
-                <span class="price">$45</span>
-                <button class="btn-add" onclick="addToCart('Fridge Care', 45)">Add</button>
-            </div>
-            <div class="addon-card">
-                <h4>Textile/Laundry</h4>
-                <span class="price">$25</span>
-                <button class="btn-add" onclick="addToCart('Laundry Load', 25)">Add</button>
-            </div>
-            <div class="addon-card">
-                <h4>Window Precision</h4>
-                <span class="price">$12</span>
-                <button class="btn-add" onclick="addToCart('Interior Window', 12)">Add</button>
-            </div>
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_mM93GVBusPk2W79AC8q5K4NpltG4mtV5A" 
+                title="YouTube playlist" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
         </div>
     </div>
 </section>
+
+<footer>
+    <p>© 2026 TRASHYCARLY CLEANING | BEYOND THE SURFACE | MESQUITE, TEXAS</p>
+</footer>
 
 <script>
 let cart = [];
@@ -219,7 +220,6 @@ function toggleCart() {
 function addToCart(name, price) {
     cart.push({name, price});
     updateCartUI();
-    // Optional: open cart when item is added
     if(!document.getElementById('cart-drawer').classList.contains('active')) toggleCart();
 }
 
